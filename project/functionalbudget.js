@@ -1,4 +1,4 @@
-
+// Importing the data
 d3.csv("firstgraph.csv", function(error,data) {
 	data.forEach(function(d){
 		d.Soles = parseInt(d.Soles)
@@ -7,11 +7,13 @@ d3.csv("firstgraph.csv", function(error,data) {
 	dataViz(data);
 });
 
+// Scales from $ to numbers used by svg
 var yScale = d3.scaleLinear().domain([0,30000]).range([0,100]).clamp(true);
 var radioscale = d3.scaleLinear().domain([0,30000]).range([0,20]).clamp(true);
 
 function dataViz(incomingdata){
 
+	//Histogram
 	d3.select("svg")
 	.selectAll("rect")
 	.data(incomingdata)
@@ -26,6 +28,7 @@ function dataViz(incomingdata){
 	.attr("x", function(d,i) {return i*23+20})
 	.attr("y", function(d) {return 200-yScale(d.Soles);});
 
+	//cirles
 	d3.select("svg:nth-child(2)")
 	.selectAll("circle")
 	.data(incomingdata)
@@ -39,6 +42,7 @@ function dataViz(incomingdata){
 	.attr("cy", function(d,i) {return i*42+30})
 	.transition().delay(1000).duration(3000).attr("r", function(d) {return radioscale(d.Soles)+4;});
 
+	//add G's positioning in order to add the text
 	var ggg = d3.select("svg:nth-child(2)")
 	.selectAll("g")
 	.data(incomingdata)
@@ -47,7 +51,7 @@ function dataViz(incomingdata){
 	.attr("transform",function(d,i) {
 		return "translate(" + 10 + "," + (i*42+30) + ")";
 	});
-
+	// Add the text
 	ggg.append("text")
 	.text(function(d) { return d.FUNCIONAL + " " + Math.round(d.Porcentaje*100*10)/10 + "%" ; });
 }
