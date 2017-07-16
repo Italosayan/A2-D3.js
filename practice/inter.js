@@ -5,22 +5,26 @@ function createSoccerViz() {
 		overallTeamViz(data);
 	})
 
+
+
 	//Handle data
 	function overallTeamViz(incomingdata){
-
-		//Locate the main g
+		//Position the main g
 		d3.select("svg")
 		.append("g")
 		.attr("id","teamsG")
 		.attr("transform","translate(50,300)")
-		// enter the mini G's
-		.selectAll("g")
-		.data(incomingdata)
-		.enter()
-		.append("g")
+		// enter the mini G's and bind data
+		.selectAll("g").data(incomingdata).enter().append("g")
 		.attr("class", "overallG")
+		//Postion each mini G
 		.attr("transform",
 			function(d,i){return "translate("+(i*50)+" ,0)"});
+
+		// var svg = d3.select("svg");
+		// svg.on("click", function() {
+		// 	console.log(d3.mouse(this));
+		// })
 
 		//For all the mini G's variable
 		var teamG = d3.selectAll("g.overallG");
