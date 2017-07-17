@@ -76,6 +76,9 @@ function createSoccerViz() {
  			});
  		};
 
+ 		var hola = d3.selectAll("g.overallG").select("circle");
+ 		console.log(hola);
+
  		//d.region is the region of the team the user goes over(with the mouse)
  		//p.region is the region of all the teams
  		teamG.on("mouseover",highlightregion);

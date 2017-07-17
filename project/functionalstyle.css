@@ -1,0 +1,42 @@
+text {
+	font-family: sans-serif;
+	color : black;
+}
+
+circle.Educacion{
+	 fill: #e74c3c;
+}
+
+circle.Planeamiento.y.gestion{
+	fill:#e8e9eb;
+}
+
+circle.Transporte.y.comunicaciones{
+	fill:#40b287;
+}
+
+circle.Salud{
+	fill:#3e404c;
+}
+
+circle.Proteccion.Social{
+	fill:#c6c386;
+}
+
+circle.Saneamiento{
+	fill:#ffcc5c;
+}
+
+circle.Justicia{
+	fill:#eae374;
+}
+
+circle.Defensa.y.seguridad.nacional{
+	fill:#e39e54;
+}
+
+circle.Orden.Publico.y.seguridad{
+	fill:#6C3483;
+}
+
+	
