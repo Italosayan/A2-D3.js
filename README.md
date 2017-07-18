@@ -1,5 +1,3 @@
-D3.js to visualize peruvian goverment data.The information was taken from here:
-
 # Visualizing government data
 #A2-D3.js
 
