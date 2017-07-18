@@ -8,7 +8,7 @@ circle.Educacion{
 }
 
 circle.Planeamiento.y.gestion{
-	fill:#e8e9eb;
+	fill:#596f39;
 }
 
 circle.Transporte.y.comunicaciones{
@@ -39,4 +39,42 @@ circle.Orden.Publico.y.seguridad{
 	fill:#6C3483;
 }
 
-	
+circle.Agropecuaria {
+	fill:#9ed670;
+}
+
+circle.Ambiente{
+	fill:#7bb3ff;
+}
+
+circle.Vivienda.y.desarrollo.urbano{
+	fill:#aec7a7;
+}
+
+circle.Cultura.y.deporte{
+	fill:#aa3bff;
+}
+
+circle.Energia.y.minas{
+	fill:#ffea7b;
+}
+
+circle.Comercio.y.turismo{
+	fill:#f46e6e;
+}
+
+circle.Relaciones.exteriores{
+	fill:#904f4f;
+}
+
+circle.Pesca.e.industria{
+	fill:#eaeaae;
+}
+
+circle.Legislativa{
+	fill:#eb5e66;
+}
+
+circle.Trabajo{
+	fill:#95d6aa;
+}

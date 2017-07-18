@@ -12,22 +12,26 @@ d3.csv("funcional.csv", function(error,data) {
 		d.Porcentaje2014 = parseFloat(d.Porcentaje2014)
 	});
 	//Sorting in a descending order
-	data.sort(function(a,b) { return b.Soles2017 - a.Soles2017 ;});
+	data.sort(function(a,b) { return b.Porcentaje2017 - a.Porcentaje2017 ;});
 	dataViz(data);
 });
 
 
 function dataViz(incomingdata){
+	var svg = d3.select("svg");
+	svg.on("click", function() {
+		console.log(d3.mouse(this));
+	})
 
 	//Getting the maximun value in order to use as a scale latter
-	var max2017 = d3.max(incomingdata, function(el) {return el.Soles2017;})
-	var yScale = d3.scaleLinear().domain([0,max2017]).range([0,100]).clamp(true);
+	var max2017 = d3.max(incomingdata, function(el) {return el.Porcentaje2017;})
+	var yScale = d3.scaleLinear().domain([0,max2017]).range([0,130]).clamp(true);
 
 	//Appending a group to the svg
 	d3.select("svg")
 	.append("g")
 	.attr("id","masterg")
-	.attr("transform","translate(140,100)")
+	.attr("transform","translate(0,0)")
 	//Appeding sub groups to the initial group
 	.selectAll("g").data(incomingdata).enter().append("g")
 	.attr("class","func")
@@ -45,9 +49,9 @@ function dataViz(incomingdata){
 	var years = ["2017","2016","2015","2014"]
 	d3.select("svg")
 	.append("g").attr("id","yeartexts")
-	.attr("transform", "translate(410,0)")
+	.attr("transform", "translate(400,0)")
 	.selectAll("text").data(years).enter().append("text")
-	.attr("x",function(d,i){return i*200;})
+	.attr("x",function(d,i){return i*297;})
 	.attr("y",40)
 	.style("text-anchor","center")
 	.style("font-size","23px")
@@ -58,14 +62,14 @@ function dataViz(incomingdata){
 
 	var S2017 = [];
 	// Max range of Yscale
-	var iter = 75 + 45;
+	var iter = 220;
 	//S2017 will be used as positioning of the circles using an acumulation.
 	//The idea is to accumulate the radio of all circles to place the next one.	
 	for (var i = 0; i < incomingdata.length; i++) {
 		if (i==0){
-			S2017.push(Math.round(75));
+			S2017.push(Math.round(200));
 		} else {
-			iter = iter + 20 + yScale(incomingdata[i].Soles2017);
+			iter = iter+ 25 + yScale(incomingdata[i].Porcentaje2017)*2.3;
 			S2017.push(Math.round(iter));
 		}
 	};
@@ -73,12 +77,12 @@ function dataViz(incomingdata){
 	d3.select("svg")
 	.append("g")
 	.attr("id","textfunc")
-	.attr("transform","translate(130,90)")
+	.attr("transform","translate(25,0)")
 	//Appeding sub groups to the initial group
 	.selectAll("g").data(incomingdata).enter().append("g")
 	.append("text")
-	.attr("x",-100)
-	.attr("y", function(d,i){return S2017[i]*1.05})
+	.attr("x",0)
+	.attr("y", function(d,i){return S2017[i]})
 	.style("text-anchor","left")
 	.style("font-size","20px")
 	.text(function(d) {return d.FUNCIONAL;});
@@ -86,74 +90,70 @@ function dataViz(incomingdata){
 	//Append a circle in each subgroup
 	funcs
 	.append("circle")
-	.attr("cx",300)
+	.attr("cx",425)
 	.attr("cy", function(d,i){return S2017[i]})
 	.attr("r",0)
 	.attr("class",function(d,i) {return d.FUNCIONAL;})
-	.transition().delay(function(d,i){return i*100}).duration(500).attr("r",function(d,i){return yScale(d.Soles2017)})
+	.transition().delay(function(d,i){return i*100}).duration(500).attr("r",function(d,i){ return yScale(d.Porcentaje2017)})
 	//Append a text(percentage spent) in each subgroup;
 	funcs
 	.append("text")
 	.attr("class", function(d,i) {return d.FUNCIONAL;})
 	.text(function(d){return Math.round(d.Porcentaje2017*10000)/100 +"%"; })
-	.attr("x", 280)
+	.attr("x", 400)
 	.attr("y",function(d,i){return S2017[i]+5})
 	.attr("visibility","hidden");
 
 	//2016
 	funcs
 	.append("circle")
-	.attr("cx",500)
+	.attr("cx",725)
 	.attr("cy", function(d,i){return S2017[i]})
 	.attr("r",0)
 	.attr("class",function(d,i) {return d.FUNCIONAL;})
-	.transition().delay(function(d,i){return i*100}).duration(500).attr("r",function(d,i){return yScale(d.Soles2016)})
+	.transition().delay(function(d,i){return i*100}).duration(500).attr("r",function(d,i){return yScale(d.Porcentaje2016)})
 	//Percentaje text 2016
 	funcs
 	.append("text")
 	.attr("class", function(d,i) {return d.FUNCIONAL;})
 	.text(function(d){return Math.round(d.Porcentaje2016*10000)/100 +"%"; })
-	.attr("x", 480)
+	.attr("x", 700)
 	.attr("y",function(d,i){return S2017[i]+5})
 	.attr("visibility","hidden");
 
 	//2015
 	funcs
 	.append("circle")
-	.attr("cx",700)
+	.attr("cx",1025)
 	.attr("cy", function(d,i){return S2017[i]})
 	.attr("r",0)
 	.attr("class",function(d,i) {return d.FUNCIONAL;})
-	.transition().delay(function(d,i){return i*100}).duration(500).attr("r",function(d,i){return yScale(d.Soles2015)})
+	.transition().delay(function(d,i){return i*100}).duration(500).attr("r",function(d,i){return yScale(d.Porcentaje2015)})
 	//2015 Percentaje text
 	funcs
 	.append("text")
 	.attr("class", function(d,i) {return d.FUNCIONAL;})
 	.text(function(d){return Math.round(d.Porcentaje2015*10000)/100 +"%"; })
-	.attr("x", 680)
+	.attr("x", 1000)
 	.attr("y",function(d,i){return S2017[i]+5})
 	.attr("visibility","hidden");
 
 	//2014
 	funcs
 	.append("circle")
-	.attr("cx",900)
+	.attr("cx",1300)
 	.attr("cy", function(d,i){return S2017[i]})
 	.attr("r",0)
 	.attr("class",function(d,i) {return d.FUNCIONAL;})
-	.transition().delay(function(d,i){return i*100}).duration(500).attr("r",function(d,i){return yScale(d.Soles2014)})
+	.transition().delay(function(d,i){return i*100}).duration(500).attr("r",function(d,i){return yScale(d.Porcentaje2014)})
 	//2014 Percentage text
 	funcs
 	.append("text")
 	.attr("class", function(d,i) {return d.FUNCIONAL;})
 	.text(function(d){return Math.round(d.Porcentaje2014*10000)/100 +"%"; })
-	.attr("x", 880)
+	.attr("x", 1275)
 	.attr("y",function(d,i){return S2017[i]+5})
 	.attr("visibility","hidden");
-
-	var hola = d3.select("#masterg")
-	console.log(hola)
-
 
 	d3.selectAll("circle")
 	.on("mouseover",percentageshow);
@@ -168,8 +168,6 @@ function dataViz(incomingdata){
 
 		d3.select("#masterg").selectAll("text")
 		.attr("visibility",function(p){
-			console.log("ppp");
-			console.log(p);
 			return p.FUNCIONAL == d.FUNCIONAL ? "visible" : "hidden";
 		});
 	}
