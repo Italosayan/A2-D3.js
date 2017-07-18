@@ -11,3 +11,6 @@ D3.js visualization to explore data from the peruvian goverment.The information 
 
 
 Props to Mr. Elijah Meeks and his book about d3.
+
+[Current state of the project](https://bl.ocks.org/Italosayan/raw/5f48a2b87d69c434bdaac4d91c94dc69/)
+
