@@ -43,7 +43,7 @@ function dataViz(incomingdata){
 	.attr("y",40)
 	.style("text-anchor","center")
 	.style("font-size","23px")
-	.text("Funci\u00f3n del estado");
+	.text("Funci\u00f3n del estado peruano");
 
 	//Entering year text
 	var years = ["2017","2016","2015","2014"]
