@@ -6,6 +6,10 @@ A force layout graph visualization.
 
 * [D3](https://d3js.org/) - The graph web framework used
 
+## Details
+
+* ![detail](/detail)
+
 ## Acknowledgments
 
 * Ravelin
