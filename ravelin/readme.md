@@ -8,7 +8,7 @@ A force layout graph visualization.
 
 ## Details
 
-* ![detail](/detail.png)
+* ![detail](detail.png)
 
 ## Acknowledgments
 
