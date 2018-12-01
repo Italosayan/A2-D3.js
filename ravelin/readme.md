@@ -16,6 +16,6 @@ A force layout graph visualization.
 
 ## Acknowledgments
 
-* Ravelin
+* Ravelin for the data
 * [Inspiration](https://bl.ocks.org/mbostock/1093130)
 * etc
