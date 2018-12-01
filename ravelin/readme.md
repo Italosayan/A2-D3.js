@@ -1,6 +1,6 @@
 # Analyzing Fraud Networks
 
-* [Conclusion of Analysis](https://github.com/Italosayan/A2-D3.js/blob/master/ravelin/Fraud_analysis.pdf)
+* [Conclusion of Analysis](https://github.com/Italosayan/A2-D3.js/blob/master/ravelin/Fraud_Analysis_doc.pdf)
 * [Interactive Visualization](https://bl.ocks.org/Italosayan/raw/c1c5f555c7a319d27f6362f3872270ac/)
 
 
